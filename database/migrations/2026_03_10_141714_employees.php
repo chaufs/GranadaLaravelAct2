@@ -18,10 +18,10 @@ return new class extends Migration
             $table->string('email')->unique();
             $table ->string('phone_number');
             $table ->date('hire_date');
-            $table ->id('job_id');
+            $table ->foreignId('job_id')->constrained('jobs');
             $table->decimal('salary', 8, 2);
-            $table ->int('manager_id')->nullable();
-            $table->int('department_id')->nullable();
+            $table ->foreignId('manager_id')->nullable()->constrained('employees', 'employee_id');
+            $table->foreignId('department_id')->constrained('departments');
             
         });
     }
