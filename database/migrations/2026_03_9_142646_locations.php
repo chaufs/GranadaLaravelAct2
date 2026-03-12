@@ -11,18 +11,21 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('departments', function (Blueprint $table) {
-            $table->id('department_id');
-            $table->string('department_name');
+        Schema::create('location',function(Blueprint $table){
             $table->id('location_id');
-        });
+            $table->string('street_address');
+            $table->string('postal_code');
+            $table->string('city');
+            $table->string('state_province');
+            $table->foreignId('country_id')->references('country_id')->on('countries');
+        }
+        );
     }
-
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        //
+        
     }
 };

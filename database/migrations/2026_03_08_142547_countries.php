@@ -11,12 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('jobs', function (Blueprint $table) {
-            $table->id();
-            $table->string('job_title');
-            $table->decimal('min_salary', 10, 2);
-            $table->decimal('max_salary', 10, 2);
-            
+        Schema::create('countries', function (Blueprint $table) {
+            $table->id('country_id');
+            $table->string('country_name');
+            $table->foreignId('region_id')->references('region_id')->on('regions');
         });
     }
 

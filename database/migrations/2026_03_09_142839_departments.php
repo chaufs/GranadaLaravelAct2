@@ -11,13 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-    Schema::create('dependents', function (Blueprint $table) {
-        $table->id('dependent_id');
-        $table->string('first_name');
-        $table->string('last_name');
-        $table->string('relationship');
-        $table->foreignId('employee_id')->constrained('employees');
-    });
+        Schema::create('departments', function (Blueprint $table) {
+            $table->id('department_id');
+            $table->string('department_name');
+            $table->foreignId('location_id')->references('location_id')->on('locations');
+        });
     }
 
     /**

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('postal_code');
             $table->string('city');
             $table->string('state_province');
-            $table->foreignId('country_id')->constrained('countries');
+            $table->foreignId('country_id')->references('country_id')->on('countries');
         }
         );
     }

@@ -11,11 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('countries', function (Blueprint $table) {
-            $table->id('country_id');
-            $table->string('country_name');
-            $table->foreignId('region_id')->constrained('regions');
-        });
+    Schema::create('dependents', function (Blueprint $table) {
+        $table->id('dependent_id');
+        $table->string('first_name');
+        $table->string('last_name');
+        $table->string('relationship');
+        $table->foreignId('employee_id')->references('employee_id')->on('employees');
+    });
     }
 
     /**

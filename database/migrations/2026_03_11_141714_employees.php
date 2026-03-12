@@ -20,8 +20,8 @@ return new class extends Migration
             $table ->date('hire_date');
             $table ->foreignId('job_id')->constrained('jobs');
             $table->decimal('salary', 8, 2);
-            $table ->foreignId('manager_id')->nullable()->constrained('employees', 'employee_id');
-            $table->foreignId('department_id')->constrained('departments');
+            $table ->foreignId('manager_id')->nullable()->references('employee_id')->on('employees');
+            $table->foreignId('department_id')->references('department_id')->on('departments');
             
         });
     }
